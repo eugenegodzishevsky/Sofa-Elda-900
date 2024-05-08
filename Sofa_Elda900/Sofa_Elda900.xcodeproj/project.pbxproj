@@ -11,6 +11,13 @@
 		DA1E93F02BE9D77600C51036 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E93EF2BE9D77600C51036 /* ContentView.swift */; };
 		DA1E93F22BE9D77800C51036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1E93F12BE9D77800C51036 /* Assets.xcassets */; };
 		DA1E93F52BE9D77800C51036 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1E93F42BE9D77800C51036 /* Preview Assets.xcassets */; };
+		DA1E93FC2BEA175700C51036 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E93FB2BEA175700C51036 /* StartScreenView.swift */; };
+		DA1E93FE2BEA177D00C51036 /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E93FD2BEA177D00C51036 /* DetailedView.swift */; };
+		DA1E94002BEB215700C51036 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E93FF2BEB215700C51036 /* VerificationView.swift */; };
+		DA1E94022BEB226D00C51036 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E94012BEB226D00C51036 /* CustomButton.swift */; };
+		DA1E94042BEB2AD700C51036 /* CustomButtonWithProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E94032BEB2AD700C51036 /* CustomButtonWithProgressView.swift */; };
+		DA1E94062BEB44EC00C51036 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E94052BEB44EC00C51036 /* AuthorizationView.swift */; };
+		DA1E94082BEB863D00C51036 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E94072BEB863D00C51036 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		DA1E93EF2BE9D77600C51036 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA1E93F12BE9D77800C51036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA1E93F42BE9D77800C51036 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA1E93FB2BEA175700C51036 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
+		DA1E93FD2BEA177D00C51036 /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
+		DA1E93FF2BEB215700C51036 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		DA1E94012BEB226D00C51036 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		DA1E94032BEB2AD700C51036 /* CustomButtonWithProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonWithProgressView.swift; sourceTree = "<group>"; };
+		DA1E94052BEB44EC00C51036 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		DA1E94072BEB863D00C51036 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,13 @@
 			children = (
 				DA1E93ED2BE9D77600C51036 /* Sofa_Elda900App.swift */,
 				DA1E93EF2BE9D77600C51036 /* ContentView.swift */,
+				DA1E93FB2BEA175700C51036 /* StartScreenView.swift */,
+				DA1E93FD2BEA177D00C51036 /* DetailedView.swift */,
+				DA1E94052BEB44EC00C51036 /* AuthorizationView.swift */,
+				DA1E94072BEB863D00C51036 /* AuthViewModel.swift */,
+				DA1E93FF2BEB215700C51036 /* VerificationView.swift */,
+				DA1E94012BEB226D00C51036 /* CustomButton.swift */,
+				DA1E94032BEB2AD700C51036 /* CustomButtonWithProgressView.swift */,
 				DA1E93F12BE9D77800C51036 /* Assets.xcassets */,
 				DA1E93F32BE9D77800C51036 /* Preview Content */,
 			);
@@ -138,7 +159,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1E93F02BE9D77600C51036 /* ContentView.swift in Sources */,
+				DA1E94042BEB2AD700C51036 /* CustomButtonWithProgressView.swift in Sources */,
+				DA1E94022BEB226D00C51036 /* CustomButton.swift in Sources */,
+				DA1E93FE2BEA177D00C51036 /* DetailedView.swift in Sources */,
 				DA1E93EE2BE9D77600C51036 /* Sofa_Elda900App.swift in Sources */,
+				DA1E94002BEB215700C51036 /* VerificationView.swift in Sources */,
+				DA1E94062BEB44EC00C51036 /* AuthorizationView.swift in Sources */,
+				DA1E93FC2BEA175700C51036 /* StartScreenView.swift in Sources */,
+				DA1E94082BEB863D00C51036 /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
