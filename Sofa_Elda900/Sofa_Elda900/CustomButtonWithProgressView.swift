@@ -49,6 +49,5 @@ struct CustomButtonWithProgressView: View {
             }
                 .allowsHitTesting(false)
         )
-        //                .disabled(isLoading)
     }
 }

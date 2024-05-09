@@ -35,32 +35,11 @@ struct AuthorizationView: View {
     
     var body: some View {
         VStack {
-            LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing)
-                .edgesIgnoringSafeArea(.top)
+            HeaderGradient()
             Spacer()
                 .frame(height: 24)
             
-            HStack(spacing: 0) {
-                Color.white
-                Color.roundedButton
-            }
-            .clipShape(Capsule())
-            .overlay(Capsule().stroke(Color.roundedButton, lineWidth: 2))
-            .overlay(
-                HStack {
-                    Spacer()
-                    Text(Constants.logIn)
-                    Spacer()
-                    Text(Constants.signUp)
-                    Spacer()
-                }
-                    .font(.custom(Constants.verdana, size: 20))
-                    .fontWeight(.bold)
-                    .foregroundStyle(.linearGradient(colors: [.darkButton, .lightButton], startPoint: .top, endPoint: .bottom))            )
-            .frame(height: 55)
-            .padding(.horizontal, 45)
-            
-            
+            loginSignupRoundedView()
             Spacer()
                 .frame(height: 35)
             
@@ -116,23 +95,7 @@ struct AuthorizationView: View {
             Spacer()
                 .frame(height: 95)
             
-            NavigationLink {
-                DetailedView()
-            } label: {
-                HStack {
-                    Spacer()
-                    Text(Constants.signUp)
-                        .font(.custom(Constants.verdana, size: 20))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                    Spacer()
-                }
-                .background(Capsule()
-                    .fill(
-                        LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing))
-                        .frame(height: 55)
-                        .padding(.horizontal, 55))
-            }
+            signupButton()
             
             Spacer()
                 .frame(height: 24)
@@ -167,7 +130,6 @@ struct AuthorizationView: View {
         }
         
         .navigationBarBackButtonHidden()
-        
     }
     
     private func setPasswordTextField() -> some View {
@@ -179,8 +141,60 @@ struct AuthorizationView: View {
             }
         }
     }
+    
+    struct loginSignupRoundedView: View {
+        var body: some View {
+            HStack(spacing: 0) {
+                Color.white
+                Color.roundedButton
+            }
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.roundedButton, lineWidth: 2))
+            .overlay(
+                HStack {
+                    Spacer()
+                    Text(Constants.logIn)
+                    Spacer()
+                    Text(Constants.signUp)
+                    Spacer()
+                }
+                    .font(.custom(Constants.verdana, size: 20))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.linearGradient(colors: [.darkButton, .lightButton], startPoint: .top, endPoint: .bottom))            )
+            .frame(height: 55)
+            .padding(.horizontal, 45)
+        }
+    }
+    
+    struct HeaderGradient: View {
+        var body: some View {
+            LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing)
+                .edgesIgnoringSafeArea(.top)
+        }
+    }
+    
+    struct signupButton: View {
+        var body: some View {
+            NavigationLink {
+                DetailedView()
+            } label: {
+                HStack {
+                    Spacer()
+                    Text(Constants.signUp)
+                        .font(.custom(Constants.verdana, size: 20))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
+                .background(Capsule()
+                    .fill(
+                        LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing))
+                        .frame(height: 55)
+                        .padding(.horizontal, 55))
+            }
+        }
+    }
 }
-
 
 #Preview {
     AuthorizationView()

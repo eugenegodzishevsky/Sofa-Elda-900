@@ -29,6 +29,7 @@ struct DetailedView: View {
     @State var reviewText = Constants.nothing
     @State var reviewCount = 0
     @State var lastText = ""
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -36,35 +37,13 @@ struct DetailedView: View {
             
             Spacer()
                 .frame(height: 44)
-            
-            HStack {
-                
-                Text(Constants.modelName)
-                Spacer()
-                Image(systemName: Constants.heart)
-                
-            }
-            .font(.custom(Constants.verdana, size: 20))
-            .bold()
-            .padding(.horizontal, 20)
+            HeaderView()
             
             Spacer()
                 .frame(height: 32)
             Image(.sofa)
             
-            HStack {
-                Spacer()
-                
-                Rectangle()
-                    .fill(.price)
-                    .frame(width: UIScreen.main.bounds.width / 2, height: 44)
-                    .clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 10)))
-                    .overlay {
-                        Text(Constants.price)
-                            .font(.custom(Constants.verdana, size: 20))
-                            .bold()
-                    }
-            }
+            PriceView()
             
             Spacer()
             
@@ -107,7 +86,6 @@ struct DetailedView: View {
                             Text(countText)
                                 .frame(width: 70)
                         }
-                        
                         Spacer()
                         
                         Button {
@@ -120,7 +98,6 @@ struct DetailedView: View {
                                 .foregroundStyle(.linearGradient(colors: [.darkButton, .lightButton], startPoint: .top, endPoint: .bottom))
                             
                             Spacer()
-                            
                         }
                         .background(Capsule()
                             .fill(.white)
@@ -130,20 +107,34 @@ struct DetailedView: View {
                         
                         Spacer()
                             .frame(height: 48)
-                        
                     }
                         .padding(.horizontal, 20)
                         .font(.custom(Constants.verdana, size: 16))
                         .foregroundStyle(.white)
-                    
                 )
-            
-            
         }
         .navigationBarBackButtonHidden()
         .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                }
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    }
+    
+    private var articleText: AttributedString {
+        makeBoldAttributedString(Constants.article) + makeRegularAttributedString(Constants.articleValue)
+    }
+    
+    private var descriptionText: AttributedString {
+        makeBoldAttributedString(Constants.description) + makeRegularAttributedString(Constants.descriptionValue)
+    }
+    
+    private var countText: String {
+        if reviewText == Constants.nothing {
+            return ""
+        }
+        if reviewText.count > 0 {
+            return "\(reviewText.count)/\(Constants.maxLength)"
+        }
+        return ""
     }
     
     func makeBoldAttributedString(_ string: String) -> AttributedString {
@@ -156,25 +147,43 @@ struct DetailedView: View {
         AttributedString(string)
     }
     
-    var articleText: AttributedString {
-        makeBoldAttributedString(Constants.article) + makeRegularAttributedString(Constants.articleValue)
+    struct HeaderView: View {
+        var body: some View {
+            HStack {
+                Text(Constants.modelName)
+                Spacer()
+                Image(systemName: Constants.heart)
+                
+            }
+            .font(.custom(Constants.verdana, size: 20))
+            .bold()
+            .padding(.horizontal, 20)
+        }
     }
     
-    var descriptionText: AttributedString {
-        makeBoldAttributedString(Constants.description) + makeRegularAttributedString(Constants.descriptionValue)
+    struct PriceView: View {
+        var body: some View {
+            HStack {
+                Spacer()
+                
+                Rectangle()
+                    .fill(.price)
+                    .frame(width: UIScreen.main.bounds.width / 2, height: 44)
+                    .clipShape(.rect(cornerRadii: RectangleCornerRadii(topLeading: 10, bottomLeading: 10)))
+                    .overlay {
+                        Text(Constants.price)
+                            .font(.custom(Constants.verdana, size: 20))
+                            .bold()
+                    }
+            }
+        }
     }
     
-    var countText: String {
-        if reviewText == Constants.nothing {
-            return ""
-        }
-        if reviewText.count > 0 {
-            return "\(reviewText.count)/\(Constants.maxLength)"
-        }
-        return ""
-    }
 }
 
 #Preview {
     DetailedView()
 }
+
+
+
