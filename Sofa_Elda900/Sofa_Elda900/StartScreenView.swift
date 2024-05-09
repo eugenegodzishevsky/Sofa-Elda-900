@@ -40,7 +40,6 @@ struct StartScreenView: View {
                     .frame(height: 60)
                 
                 Image(.logo)
-                //
                 AsyncImage(url: URL(string: Constants.sofaPick)) { phase in
                                switch phase {
                                case .empty:
@@ -62,7 +61,6 @@ struct StartScreenView: View {
                                }
                            }
                            .padding(.horizontal, 45)
-                //
                 Spacer()
 
                 NavigationLink(destination: DetailedView()) {
@@ -78,8 +76,6 @@ struct StartScreenView: View {
                         .padding(.horizontal, 45)
                         .shadow(radius: 4, y: 4))
                 }
-                
-                
                 Spacer()
                     .frame(height: 75)
                 
@@ -99,16 +95,12 @@ struct StartScreenView: View {
                         Divider()
                             .overlay(.lightGreen)
                             .frame(width: 180)
-                        
                     }
                 }
-                
                 Spacer()
                     .frame(height: 121)
-                
             }
             .foregroundStyle(.white)
-            
         }
     }
 }

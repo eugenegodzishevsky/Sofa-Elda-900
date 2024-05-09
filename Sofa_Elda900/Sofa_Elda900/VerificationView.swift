@@ -10,6 +10,7 @@ import SwiftUI
 struct VerificationView: View {
     
     @State private var isLoading = false
+    
     @FocusState private var focusedField: Int?
     
     private enum Constants {
@@ -30,21 +31,14 @@ struct VerificationView: View {
         
     }
     @Environment(\.dismiss) private var dismiss
+    
     @State var smsNumbers = ["0", "0", "0", "0"]
     @State var isAlertShown = false
     
     var body: some View {
         ZStack {
-            
-            VStack {
-                LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing)
-                    .frame(height: Constants.gradientHeight)
-                Color.white
-            }
-            .ignoresSafeArea()
-            
+            HeaderGradientView()
             VStack(spacing: 20) {
-                
                 Image(.mail)
                     .padding(.top, Constants.gradientHeight)
                     .frame(width: 200, height: 200)
@@ -53,45 +47,37 @@ struct VerificationView: View {
                     .font(.custom(Constants.verdana, size: 20))
                 
                 HStack(spacing: 8) {
-                    HStack(spacing: 8) {
-                        ForEach(0..<smsNumbers.count, id: \.self) { index in
-                            TextField("", text: $smsNumbers[index])
-                                .multilineTextAlignment(.center)
-                                .font(.custom(Constants.verdana, size: 40))
-                                .frame(width: 60, height: 60)
-                                .border(.secondary)
-                                .keyboardType(.numberPad)
-                                .focused($focusedField, equals: index)
-
-                                .onChange(of: focusedField) { focused in
-                                    if focused == index {
-                                        smsNumbers[index] = ""
-                                    }
+                    ForEach(0..<smsNumbers.count, id: \.self) { index in
+                        TextField("", text: $smsNumbers[index])
+                            .multilineTextAlignment(.center)
+                            .font(.custom(Constants.verdana, size: 40))
+                            .frame(width: 60, height: 60)
+                            .border(.secondary)
+                            .keyboardType(.numberPad)
+                            .focused($focusedField, equals: index)
+                        
+                            .onChange(of: focusedField) { focused in
+                                if focused == index {
+                                    smsNumbers[index] = ""
                                 }
-                            
-                                .onChange(of: smsNumbers[index]) { newValue in
-                                    if newValue.count == 1 {
-                                        focusedField = (index == smsNumbers.count - 1) ? nil : index + 1
-                                    }
-                                    
+                            }
+                        
+                            .onChange(of: smsNumbers[index]) { newValue in
+                                if newValue.count == 1 {
+                                    focusedField = (index == smsNumbers.count - 1) ? nil : index + 1
                                 }
-                            
-                        }
+                            }
                     }
                 }
                 
                 Text(Constants.checkSMS)
                     .font(.custom(Constants.verdana, size: 20))
                     .bold()
-                
-                
-                
                 Text(Constants.getSMS)
                     .font(.custom(Constants.verdana, size: 16))
                     .offset(y: -20)
                 
                 CustomButtonWithProgressView()
-                
                 
                 Text(Constants.didntReceive)
                     .font(.custom(Constants.verdana, size: 20))
@@ -110,11 +96,8 @@ struct VerificationView: View {
                     .overlay(.black)
                     .padding(.horizontal, 115)
                     .offset(y: -25)
-                
-                
                 Spacer()
             }
-            
             .foregroundStyle(.darkButton)
             .alert(Constants.alert, isPresented: $isAlertShown) {
                 Button(action: {}) {
@@ -130,7 +113,6 @@ struct VerificationView: View {
             } message: {
                 Text(Constants.smsCode)
             }
-            
             .navigationBarTitle(Constants.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -153,7 +135,6 @@ struct VerificationView: View {
                 }
             }
         }
-        
     }
     
     func setupCode() {
@@ -162,9 +143,21 @@ struct VerificationView: View {
             smsNumbers[index] = characters[index]
         }
     }
+    
+    struct HeaderGradientView: View {
+        var body: some View {
+            VStack {
+                LinearGradient(colors: [.lightGreen, .darkGreen], startPoint: .leading, endPoint: .trailing)
+                    .frame(height: Constants.gradientHeight)
+                Color.white
+            }
+            .ignoresSafeArea()
+        }
+    }
 }
 
 
 #Preview {
     VerificationView()
 }
+
