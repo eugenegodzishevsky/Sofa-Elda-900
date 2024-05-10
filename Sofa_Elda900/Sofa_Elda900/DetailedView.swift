@@ -32,6 +32,8 @@ struct DetailedView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    var productDetailModel: GoodsModel
+    
     var body: some View {
         VStack {
             
@@ -147,6 +149,7 @@ struct DetailedView: View {
         AttributedString(string)
     }
     
+    @available(iOS 16.0, *)
     struct HeaderView: View {
         var body: some View {
             HStack {
@@ -161,6 +164,7 @@ struct DetailedView: View {
         }
     }
     
+    @available(iOS 16.0, *)
     struct PriceView: View {
         var body: some View {
             HStack {
@@ -181,9 +185,9 @@ struct DetailedView: View {
     
 }
 
-#Preview {
-    DetailedView()
-}
+//#Preview {
+//    DetailedView()
+//}
 
 
 

@@ -63,7 +63,7 @@ struct StartScreenView: View {
                            .padding(.horizontal, 45)
                 Spacer()
 
-                NavigationLink(destination: DetailedView()) {
+                NavigationLink(destination: ShopTabView()) {
                     HStack {
                         Spacer()
                         Text(Constants.getStarted)
