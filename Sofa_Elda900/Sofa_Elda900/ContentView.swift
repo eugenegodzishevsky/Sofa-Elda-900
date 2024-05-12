@@ -11,6 +11,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+//            ShopTabView()
+//            ProfileView()
                   StartScreenView()
               }
           }
