@@ -29,8 +29,19 @@ struct DetailedView: View {
     @State var reviewText = Constants.nothing
     @State var reviewCount = 0
     @State var lastText = ""
+    @State var scale: CGFloat = 1.0
     
     @Environment(\.dismiss) var dismiss
+    
+    var magnification: some Gesture {
+           MagnificationGesture()
+               .onChanged { value in
+                   scale = value
+               }
+               .onEnded { _ in
+                   scale = 1
+               }
+       }
     
     var productDetailModel: GoodsModel
     
@@ -44,6 +55,7 @@ struct DetailedView: View {
             Spacer()
                 .frame(height: 32)
             Image(.sofa)
+                .scaleEffect(scale)
             
             PriceView()
             
@@ -116,6 +128,8 @@ struct DetailedView: View {
                 )
         }
         .navigationBarBackButtonHidden()
+        .gesture(magnification)
+
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
@@ -182,7 +196,6 @@ struct DetailedView: View {
             }
         }
     }
-    
 }
 
 //#Preview {

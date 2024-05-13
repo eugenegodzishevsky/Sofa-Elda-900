@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomButton: View {
     
     private let verdana = "Verdana"
+    
     var buttonName: String
     var action: () -> Void
     
