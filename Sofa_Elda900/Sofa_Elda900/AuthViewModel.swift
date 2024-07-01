@@ -8,41 +8,20 @@
 import Foundation
 
 final class AuthViewModel: ObservableObject {
-    private let phoneFormat = "+X (XXX) XXX-XX-XX"
     
-    @Published public var showPassword = false
-    @Published public var showPasswordKeyboard = false
-    @Published public var showPhoneNumberKeyboard = true
+    @Published var password = ""
+    @Published var phoneNumber = ""
     
-    public func updateField() {
-        showPassword.toggle()
+    func phoneNumberCheck(with value: String) {
+        phoneNumber = formatNumber(value, mask: "+X (XXX) XXX-XX-XX")
     }
     
-    public func checkPhoneNumber(count: Int) {
-        if count == phoneFormat.count {
-            showPhoneNumberKeyboard = false
-            showPasswordKeyboard = true
-        }
-    }
-    
-    public func checkPassword(count: Int) {
-        if count == 15 {
-            showPasswordKeyboard = false
-        }
-    }
-    
-    public func formatPhoneNumber(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+    private func formatNumber(_ value: String, mask: String) -> String {
+        var number = value.filter({"01234567890".contains($0)})
         var result = ""
-        var index = numbers.startIndex
-
-        for char in mask where index < numbers.endIndex {
-            if char == "X" {
-                result.append(numbers[index])
-                index = numbers.index(after: index)
-            } else {
-                result.append(char)
-            }
+        for char in mask {
+            guard !number.isEmpty else {break}
+            result.append(char == "X" ? number.removeFirst() : char)
         }
         return result
     }
